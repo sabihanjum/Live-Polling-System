@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import pollRoutes from "./routes/poll.routes";
 
@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });
 
