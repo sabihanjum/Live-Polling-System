@@ -22,6 +22,16 @@ export default function TeacherDashboard() {
     if (savedHistory) {
       setPollHistory(JSON.parse(savedHistory));
     }
+
+    // Poll for updates every second to sync with student votes
+    const interval = setInterval(() => {
+      const currentPoll = localStorage.getItem('activePoll');
+      if (currentPoll) {
+        setPoll(JSON.parse(currentPoll));
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleCreatePoll = () => {
@@ -55,10 +65,15 @@ export default function TeacherDashboard() {
 
   const handleEndPoll = () => {
     if (poll) {
-      const updatedPoll = { ...poll, status: 'closed' };
+      // Get the latest poll data from localStorage (in case student just voted)
+      const latestPoll = localStorage.getItem('activePoll');
+      const pollToClose = latestPoll ? JSON.parse(latestPoll) : poll;
+      
+      const updatedPoll = { ...pollToClose, status: 'closed' };
       setPoll(updatedPoll);
       localStorage.setItem('activePoll', JSON.stringify(updatedPoll));
-      // Add to history
+      
+      // Add to history with latest vote counts
       const newHistory = [updatedPoll, ...pollHistory];
       setPollHistory(newHistory);
       localStorage.setItem('pollHistory', JSON.stringify(newHistory));
