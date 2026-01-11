@@ -8,6 +8,7 @@ export default function StudentJoin() {
   const [isConnected] = useState(true);
   const [poll, setPoll] = useState<any>(null);
   const [hasVoted, setHasVoted] = useState<any>(null);
+  const [pollWasActive, setPollWasActive] = useState(false);
 
   useEffect(() => {
     // Load poll from localStorage and update periodically
@@ -33,7 +34,9 @@ export default function StudentJoin() {
     // Load the active poll from localStorage
     const savedPoll = localStorage.getItem('activePoll');
     if (savedPoll) {
-      setPoll(JSON.parse(savedPoll));
+      const pollData = JSON.parse(savedPoll);
+      setPoll(pollData);
+      setPollWasActive(true);
     }
   };
 
@@ -90,7 +93,25 @@ export default function StudentJoin() {
           </div>
         </div>
 
-        {!poll || poll.status === 'closed' ? (
+        {poll && poll.status === 'closed' && pollWasActive ? (
+          <div className="kicked-out-container">
+            <div className="kicked-out-content">
+              <h2>You've been kicked out!</h2>
+              <p>The teacher has ended the poll.</p>
+              <button 
+                className="join-btn"
+                onClick={() => {
+                  setHasJoined(false);
+                  setPoll(null);
+                  setPollWasActive(false);
+                  setStudentName('');
+                }}
+              >
+                Back to Home
+              </button>
+            </div>
+          </div>
+        ) : !poll || poll.status === 'closed' ? (
           <div className="no-poll">
             <h3>No Active Poll</h3>
             <p>Waiting for the teacher to start a poll...</p>

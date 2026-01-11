@@ -141,6 +141,30 @@
   font-weight: 500;
 }
 
+.kicked-out-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 3rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.kicked-out-content h2 {
+  color: #f5576c;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.kicked-out-content p {
+  color: #764ba2;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
 .poll-container,
 .results-container {
   max-width: 800px;
