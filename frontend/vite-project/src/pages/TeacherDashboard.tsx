@@ -7,7 +7,6 @@ export default function TeacherDashboard() {
   const [duration, setDuration] = useState(60);
   const [showHistory, setShowHistory] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isConnected, setIsConnected] = useState(true);
   const [poll, setPoll] = useState<any>(null);
   const [pollHistory, setPollHistory] = useState<any[]>([]);
 
@@ -38,7 +37,7 @@ export default function TeacherDashboard() {
     const newPoll = { 
       _id: Date.now().toString(), 
       question, 
-      options: filledOptions.map((text, i) => ({ text, votes: 0 })),
+      options: filledOptions.map((text) => ({ text, votes: 0 })),
       duration,
       totalVotes: 0,
       status: 'active',
