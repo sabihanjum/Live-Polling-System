@@ -147,19 +147,32 @@ export default function TeacherDashboard() {
           <div className="results">
             {poll.options.map((option: any, index: number) => (
               <div key={index} className="result-item">
-                <div className="option-name">{option.text}</div>
+                <div className="option-name" style={{ 
+                  color: '#667eea', 
+                  fontWeight: '600',
+                  fontSize: '1.1rem'
+                }}>
+                  {option.text}
+                </div>
                 <div className="votes-bar">
                   <div
                     className="vote-count"
                     style={{
                       width: `${poll.totalVotes > 0 ? (option.votes / poll.totalVotes) * 100 : 0}%`,
-                      transition: 'width 0.3s ease'
+                      transition: 'width 0.3s ease',
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      fontWeight: 'bold'
                     }}
                   >
                     {option.votes > 0 && `${option.votes}`}
                   </div>
                 </div>
-                <div className="vote-percentage">
+                <div className="vote-percentage" style={{
+                  color: '#764ba2',
+                  fontWeight: '700',
+                  fontSize: '1.1rem'
+                }}>
                   {poll.totalVotes > 0 ? Math.round((option.votes / poll.totalVotes) * 100) : 0}%
                 </div>
               </div>
@@ -167,8 +180,12 @@ export default function TeacherDashboard() {
           </div>
 
           <div className="poll-stats">
-            <span>Total Votes: {poll.totalVotes}</span>
-            <span>Status: {poll.status}</span>
+            <span style={{ color: '#667eea', fontWeight: '700', fontSize: '1.1rem' }}>
+              Total Votes: {poll.totalVotes}
+            </span>
+            <span style={{ color: '#764ba2', fontWeight: '600' }}>
+              Status: {poll.status}
+            </span>
           </div>
 
           <button className="end-poll-btn" onClick={handleEndPoll}>
@@ -197,12 +214,28 @@ export default function TeacherDashboard() {
                   <div className="history-results">
                     {historyPoll.options.map((option: any, optIndex: number) => (
                       <div key={optIndex} className="history-option">
-                        <span className="option-text">{option.text}</span>
-                        <span className="option-votes">{option.votes} votes</span>
+                        <span className="option-text" style={{ 
+                          color: '#667eea', 
+                          fontWeight: '600',
+                          fontSize: '1.05rem'
+                        }}>
+                          {option.text}
+                        </span>
+                        <span className="option-votes" style={{
+                          color: '#764ba2',
+                          fontWeight: '700',
+                          fontSize: '1.05rem'
+                        }}>
+                          {option.votes} votes
+                        </span>
                       </div>
                     ))}
                   </div>
-                  <div className="history-stats">
+                  <div className="history-stats" style={{
+                    color: '#667eea',
+                    fontWeight: '700',
+                    fontSize: '1rem'
+                  }}>
                     Total Votes: {historyPoll.totalVotes}
                   </div>
                 </div>
