@@ -5,6 +5,7 @@ export default function StudentJoin() {
   const [studentName, setStudentName] = useState('');
   const [hasJoined, setHasJoined] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isConnected, setIsConnected] = useState(true);
   const [poll, setPoll] = useState<any>(null);
   const [hasVoted, setHasVoted] = useState<any>(null);
 
