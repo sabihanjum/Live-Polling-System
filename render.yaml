@@ -9,20 +9,13 @@ services:
         value: production
       - key: PORT
         value: 4000
-      - key: MONGODB_URI
-        fromDatabase:
-          name: polling-system-db
-          property: connectionString
-    disk:
-      name: polling-data
-      mountPath: /data
-      sizeGB: 1
+    # MONGODB_URI optional for persistence; remove or set in service settings
 
   - type: web
     name: polling-system-frontend
     runtime: node
     buildCommand: cd frontend/vite-project && npm install && npm run build
-    startCommand: npm install -g serve && serve -s dist -l 3000
+    startCommand: cd frontend/vite-project && npx --yes serve -s dist -l 3000
     envVars:
       - key: NODE_ENV
         value: production
@@ -30,12 +23,4 @@ services:
         value: https://polling-system-backend.onrender.com
       - key: VITE_SOCKET_URL
         value: https://polling-system-backend.onrender.com
-    routes:
-      - path: /
-        destination: /index.html
 
-databases:
-  - name: polling-system-db
-    databaseName: polling_system
-    user: polling_user
-    plan: free
