@@ -7,7 +7,7 @@ export default function TeacherDashboard() {
   const [duration, setDuration] = useState(60);
   const [showHistory, setShowHistory] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isConnected, setIsConnected] = useState(true);
+  const [isConnected] = useState(true);
   const [poll, setPoll] = useState<any>(null);
   const [pollHistory, setPollHistory] = useState<any[]>([]);
 
