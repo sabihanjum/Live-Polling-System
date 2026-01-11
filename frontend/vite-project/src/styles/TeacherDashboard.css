@@ -1,0 +1,415 @@
+.teacher-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.create-poll-section,
+.active-poll-section {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.create-poll-section h2,
+.active-poll-section h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.question-input,
+.option-input,
+.duration-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.question-input:focus,
+.option-input:focus,
+.duration-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.option-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.remove-option-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.remove-option-btn:hover {
+  background-color: #da190b;
+}
+
+.add-option-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-top: 0.5rem;
+}
+
+.add-option-btn:hover {
+  background-color: #45a049;
+}
+
+.create-poll-btn,
+.end-poll-btn,
+.history-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+}
+
+.create-poll-btn:hover,
+.end-poll-btn:hover,
+.history-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.end-poll-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.history-btn {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.poll-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.timer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: 600;
+}
+
+.timer-label {
+  font-size: 0.9rem;
+}
+
+.timer-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.poll-question {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.poll-question h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.poll-results h4 {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.result-item {
+  margin-bottom: 1.5rem;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.option-text {
+  font-weight: 600;
+  color: #333;
+}
+
+.vote-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.history-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1000;
+}
+
+.history-content {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.close-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #da190b;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.history-item {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.history-item h4 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.poll-date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.history-results {
+  margin: 1rem 0;
+}
+
+.history-result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.history-result-item:last-child {
+  border-bottom: none;
+}
+
+.total-votes {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.history-section {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.history-section h3 {
+  color: #667eea;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.history-item {
+  background: #f8f9fb;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.history-header h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.history-date {
+  color: #999;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.history-results {
+  margin: 1rem 0;
+}
+
+.history-option {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.history-option:last-child {
+  margin-bottom: 0;
+}
+
+.option-text {
+  color: #333;
+  font-weight: 500;
+}
+
+.option-votes {
+  color: #764ba2;
+  font-weight: 600;
+}
+
+.history-stats {
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .teacher-dashboard {
+    padding: 1rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .poll-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .result-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
