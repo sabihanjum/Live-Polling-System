@@ -15,7 +15,7 @@ services:
     name: polling-system-frontend
     runtime: node
     buildCommand: cd frontend/vite-project && npm install && npm run build
-    startCommand: cd frontend/vite-project && npx --yes serve -s dist -l 3000
+    startCommand: cd frontend/vite-project && npx --yes serve -s dist -l $PORT
     envVars:
       - key: NODE_ENV
         value: production
